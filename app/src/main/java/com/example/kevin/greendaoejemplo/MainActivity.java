@@ -1,5 +1,6 @@
 package com.example.kevin.greendaoejemplo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -97,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.item_grafica:
+                Intent intent = new Intent(this,Graph.class);
+                startActivity(intent);
 
                 return true;
 
