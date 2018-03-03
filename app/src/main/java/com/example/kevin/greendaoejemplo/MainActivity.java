@@ -5,19 +5,14 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.kevin.greendaoejemplo.Purposes.Purposes;
+import com.example.kevin.greendaoejemplo.Purposes.PurposesAdapter;
+import com.example.kevin.greendaoejemplo.Purposes.PurposesController;
 
 public class MainActivity extends AppCompatActivity {
 
-
-     DaoSession daoSession; ///Objeto de la sesion
-     PurposesDao purposesDao;  //notasDao sera quien maneje las operaciones de la tabla
-
-    private List<Purposes> purposes;
     private RecyclerView myReclyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager myLayoutManager;
@@ -27,21 +22,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Init.getInstance().DeleteAllBases(); //ESTO BORRA TODOS LOS DATOS DE LA BASE, QUITAR!!!!!!!
-        daoSession = Init.getInstance().getDaoSession(); //Se recupera la sesion del singleton
-        purposesDao = daoSession.getPurposesDao(); //se recupera el manejador de la sesion
-        /*Aquí inserto una lista de datos en la base de datos*/
-
-        purposesDao.insertInTx(getAllPurposes());
-
+        PurposesController purposesController = new PurposesController();
         try{
-            purposes= this.purposesDao.loadAll();//aquí lo mando a llamar
             myReclyclerView = (RecyclerView) findViewById(R.id.mRecycler);
-            myAdapter = new PurposesAdapter(purposes, R.layout.item_purposes,new PurposesAdapter.onItemClickListener(){
+            myAdapter = new PurposesAdapter( purposesController.getAll(), R.layout.purposes_item,new PurposesAdapter.onItemClickListener(){
                 @Override
                 public void onItemClick(Purposes purpose, int position) {
                     Toast.makeText(MainActivity.this, purpose.getName() + " - "+ position,Toast.LENGTH_LONG).show();
-                    //deleteMovie(position);
 
                 }
             });
@@ -58,24 +45,10 @@ public class MainActivity extends AppCompatActivity {
             myReclyclerView.setAdapter(myAdapter);
         }catch(Exception e)
         {
-            System.out.println("nose :" + e.getMessage());
+            Toast.makeText(this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+            System.out.println("Error :" + e.getMessage());
         }
 
-
-
-
-
-
-
     }
-    private List<Purposes> getAllPurposes(){
-        return new ArrayList<Purposes>(){{
-            add(new Purposes(1L,"Correr","Correr",0.25));
-            add(new Purposes(2L,"Aprender ingles","exit o",0.25));
-            add(new Purposes(3L,"Aprender linux","sudo su",0.25));
 
-
-
-        }};
-    }
 }

@@ -1,6 +1,9 @@
-package com.example.kevin.greendaoejemplo;
+package com.example.kevin.greendaoejemplo.utils;
 
 import android.app.Application;
+
+import com.example.kevin.greendaoejemplo.DaoMaster;
+import com.example.kevin.greendaoejemplo.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -8,9 +11,9 @@ import org.greenrobot.greendao.database.Database;
  * Created by KEVIN on 28/2/2018.
  */
 
-public class Init extends Application {
+public class Core extends Application {
     private DaoSession daoSession; //Objeto privado de la sesion de green dao
-    private static Init applicationInstance; // Este objeto regresara la instancia de la propia clase
+    private static Core applicationInstance; // Este objeto regresara la instancia de la propia clase
 
     @Override
     public void onCreate() {
@@ -47,7 +50,7 @@ public class Init extends Application {
         DaoMaster.createAllTables(daoSession.getDatabase(), true);
     }
 
-    public static synchronized Init getInstance() {
+    public static synchronized Core getInstance() {
 
         //Este metodo recupera la instancia de esta clase
         return applicationInstance;

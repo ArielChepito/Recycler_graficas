@@ -1,4 +1,4 @@
-package com.example.kevin.greendaoejemplo;
+package com.example.kevin.greendaoejemplo.Purposes;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.kevin.greendaoejemplo.R;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -67,7 +70,7 @@ public class PurposesAdapter extends RecyclerView.Adapter<PurposesAdapter.ViewHo
 
         public void bind(final Purposes Purposes, final  onItemClickListener listener){
             //procesamos los datos para renderizar
-            name.setText(Purposes.getName());
+            name.setText(Purposes.getName() + " "  + new SimpleDateFormat("dd-MM-yyyy").format( Purposes.getDate()));
             description.setText(Purposes.getDescription());
             // this.textViewPurposes.setText(Purposes.getName());
             /// definimos que por cada elemento del recycler view tenemos un listener que se va a comportart de la siguiente manera

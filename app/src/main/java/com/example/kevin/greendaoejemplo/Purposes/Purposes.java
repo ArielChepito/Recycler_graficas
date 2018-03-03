@@ -1,9 +1,10 @@
-package com.example.kevin.greendaoejemplo;
+package com.example.kevin.greendaoejemplo.Purposes;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Generated;
+
+import java.util.Date;
 
 /**
  * Created by KEVIN on 28/2/2018.
@@ -22,12 +23,19 @@ public class Purposes {
 
     private double percentage;
 
-    @Generated(hash = 272311358)
-    public Purposes(Long Id, String name, String description, double percentage) {
+    private Date date;
+
+    private boolean state;
+
+    @Generated(hash = 2007811022)
+    public Purposes(Long Id, String name, String description, double percentage,
+            Date date, boolean state) {
         this.Id = Id;
         this.name = name;
         this.description = description;
         this.percentage = percentage;
+        this.date = date;
+        this.state = state;
     }
 
     @Generated(hash = 1209183919)
@@ -64,6 +72,22 @@ public class Purposes {
 
     public void setPercentage(double percentage) {
         this.percentage = percentage;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean getState() {
+        return this.state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
 
