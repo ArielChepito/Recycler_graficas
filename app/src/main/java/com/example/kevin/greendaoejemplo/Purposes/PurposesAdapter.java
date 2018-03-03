@@ -70,7 +70,8 @@ public class PurposesAdapter extends RecyclerView.Adapter<PurposesAdapter.ViewHo
 
         public void bind(final Purposes Purposes, final  onItemClickListener listener){
             //procesamos los datos para renderizar
-            name.setText(Purposes.getName() + " "  + new SimpleDateFormat("dd-MM-yyyy").format( Purposes.getDate()));
+            String date = new SimpleDateFormat("dd-MM-yyyy").format( Purposes.getDate());
+            name.setText(Purposes.getName());
             description.setText(Purposes.getDescription());
             // this.textViewPurposes.setText(Purposes.getName());
             /// definimos que por cada elemento del recycler view tenemos un listener que se va a comportart de la siguiente manera

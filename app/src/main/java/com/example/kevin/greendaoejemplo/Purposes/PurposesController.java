@@ -19,12 +19,12 @@ public class PurposesController implements PurposesOperations {
 
 
     public PurposesController(){
-        Core.getInstance().DeleteAllBases(); //ESTO BORRA TODOS LOS DATOS DE LA BASE, QUITAR!!!!!!!
+        //Core.getInstance().DeleteAllBases(); //ESTO BORRA TODOS LOS DATOS DE LA BASE, QUITAR!!!!!!!
         daoSession = Core.getInstance().getDaoSession(); //Se recupera la sesion del singleton
         purposesDao = daoSession.getPurposesDao(); //se recupera el manejador de la sesion
         /*Aquí inserto una lista de datos en la base de datos*/
 
-        purposesDao.insertInTx(getAllPurposes());
+        ///purposesDao.insertInTx(getAllPurposes());
     }
 
     private List<Purposes> getAllPurposes(){
