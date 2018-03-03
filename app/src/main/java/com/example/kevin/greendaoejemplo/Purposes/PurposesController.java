@@ -1,9 +1,9 @@
 package com.example.kevin.greendaoejemplo.Purposes;
 
-import com.example.kevin.greendaoejemplo.DaoSession;
-import com.example.kevin.greendaoejemplo.PurposesDao;
-import com.example.kevin.greendaoejemplo.utils.Core;
 
+import com.example.kevin.greendaoejemplo.utils.Core;
+import com.example.kevin.greendaoejemplo.Purposes.DaoMaster;
+import com.example.kevin.greendaoejemplo.Purposes.DaoSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,19 +19,19 @@ public class PurposesController implements PurposesOperations {
 
 
     public PurposesController(){
-        //Core.getInstance().DeleteAllBases(); //ESTO BORRA TODOS LOS DATOS DE LA BASE, QUITAR!!!!!!!
+        Core.getInstance().DeleteAllBases(); //ESTO BORRA TODOS LOS DATOS DE LA BASE, QUITAR!!!!!!!
         daoSession = Core.getInstance().getDaoSession(); //Se recupera la sesion del singleton
         purposesDao = daoSession.getPurposesDao(); //se recupera el manejador de la sesion
         /*Aquí inserto una lista de datos en la base de datos*/
 
-        ///purposesDao.insertInTx(getAllPurposes());
+        purposesDao.insertInTx(getAllPurposes());
     }
 
     private List<Purposes> getAllPurposes(){
         return new ArrayList<Purposes>(){{
-            add(new Purposes(1L,"Correr","Correr",0.25,new Date(),false));
-            add(new Purposes(2L,"Aprender ingles","exit o",0.25,new Date(),false));
-            add(new Purposes(3L,"Aprender linux","sudo su",0.25,new Date(),false));
+            add(new Purposes(1L,"Correr","Correr",50,new Date(),false));
+            add(new Purposes(2L,"Aprender ingles","exit o",25,new Date(),false));
+            add(new Purposes(3L,"Aprender linux","sudo su",75,new Date(),false));
 
         }};
     }
@@ -75,7 +75,8 @@ public class PurposesController implements PurposesOperations {
 
     @Override
     public List<Purposes> getAll() {
-        return purposesDao.loadAll();
+        return purposesDao.queryBuilder().orderAsc(PurposesDao.Properties.Percentage).list();
+        ///purposesDao.loadAll();
     }
 
     @Override

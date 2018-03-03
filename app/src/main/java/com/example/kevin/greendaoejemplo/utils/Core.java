@@ -1,10 +1,8 @@
 package com.example.kevin.greendaoejemplo.utils;
 
 import android.app.Application;
-
-import com.example.kevin.greendaoejemplo.DaoMaster;
-import com.example.kevin.greendaoejemplo.DaoSession;
-
+import com.example.kevin.greendaoejemplo.Purposes.DaoMaster;
+import com.example.kevin.greendaoejemplo.Purposes.DaoSession;
 import org.greenrobot.greendao.database.Database;
 
 /**

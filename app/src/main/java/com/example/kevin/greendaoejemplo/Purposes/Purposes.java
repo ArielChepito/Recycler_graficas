@@ -21,14 +21,14 @@ public class Purposes {
 
     private String description;
 
-    private double percentage;
+    private int percentage;
 
     private Date date;
 
     private boolean state;
 
-    @Generated(hash = 2007811022)
-    public Purposes(Long Id, String name, String description, double percentage,
+    @Generated(hash = 1203198114)
+    public Purposes(Long Id, String name, String description, int percentage,
             Date date, boolean state) {
         this.Id = Id;
         this.name = name;
@@ -66,11 +66,11 @@ public class Purposes {
         this.description = description;
     }
 
-    public double getPercentage() {
+    public int getPercentage() {
         return this.percentage;
     }
 
-    public void setPercentage(double percentage) {
+    public void setPercentage(int percentage) {
         this.percentage = percentage;
     }
 
@@ -90,5 +90,5 @@ public class Purposes {
         this.state = state;
     }
 
-
+    
 }

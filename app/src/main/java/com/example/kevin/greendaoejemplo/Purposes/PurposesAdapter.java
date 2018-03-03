@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.kevin.greendaoejemplo.R;
@@ -56,6 +57,7 @@ public class PurposesAdapter extends RecyclerView.Adapter<PurposesAdapter.ViewHo
         public TextView name;
         public TextView description;
         public Button prompPurpose;
+        public ProgressBar progressBar;
 
         public ViewHolder(View v){
 
@@ -65,6 +67,7 @@ public class PurposesAdapter extends RecyclerView.Adapter<PurposesAdapter.ViewHo
             this.name =(TextView) v.findViewById(R.id.purposeName);
             this.description = (TextView) v.findViewById(R.id.purposeDesc);
             this.prompPurpose = v.findViewById(R.id.prompPurpose);
+            this.progressBar = v.findViewById(R.id.progressBarPercen);
 
         }
 
@@ -75,6 +78,7 @@ public class PurposesAdapter extends RecyclerView.Adapter<PurposesAdapter.ViewHo
             description.setText(Purposes.getDescription());
             // this.textViewPurposes.setText(Purposes.getName());
             /// definimos que por cada elemento del recycler view tenemos un listener que se va a comportart de la siguiente manera
+            progressBar.setProgress(Purposes.getPercentage());
             prompPurpose.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

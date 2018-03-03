@@ -73,7 +73,7 @@ public class PurposesDialog {
 
                         purposes.setName(txtname.getText().toString());
                         purposes.setDescription(txtdescription.getText().toString());
-                        purposes.setPercentage(Double.parseDouble(txtPercentaje.getText().toString()));
+                        purposes.setPercentage(Integer.parseInt(txtPercentaje.getText().toString()));
                         purposes.setDate(new Date());
 
                         listener.onDataReady(purposes,saveOrUpdate);
